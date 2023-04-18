@@ -1,0 +1,117 @@
+body {
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+
+#game {
+    background: #353336;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-canvas {
+    display: block;
+    border-radius: 5px;
+}
+
+.game-header {
+    padding-top: 1vmin;
+    padding-bottom: 1vmin;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-score {
+    padding: 10px 15px;
+    min-width: 160px;
+    height: 50px;
+    background: #121214;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-count {
+    font-size: 3vmin;
+    color: #D21855;
+    font-weight: bold;
+}
+
+.game-mode {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.toggle-checkbox {
+    display: none;
+}
+
+.toggle-switch {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    right: 50px;
+    bottom: 0;
+    background-color: #D21855;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+.toggle-switch:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #353336;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.toggle-checkbox:checked~.toggle-switch {
+    background-color: #eea825;
+}
+
+
+.toggle-checkbox:checked~.toggle-switch:before {
+    transform: translateX(30px);
+}
+
+.toggle-text {
+    position: absolute;
+    left: 45px;
+    bottom: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.canvas-wrapper {
+    margin-top: 10px;
+    background-color: #161618;
+    border-radius: 5px;
+    border: 10px solid #161618;
+    box-shadow: 0px 0px 40px 10px #161618;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23525053'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
