@@ -265,3 +265,71 @@ document.addEventListener("keydown", function (e) {
     snake.dy = 0;
   }
 });
+
+let touchStartX = null;
+let touchStartY = null;
+
+document.addEventListener('touchstart', function (e) {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const direction = getSwipeDirection(touchStartX, touchStartY, touchEndX, touchEndY);
+  if (direction) {
+    updateDirection(direction);
+  }
+});
+
+document.addEventListener('touchend', function (e) {
+  touchStartX = null;
+  touchStartY = null;
+});
+
+function updateDirection(direction) {
+  if (
+    (direction == 'up') &&
+    snake.dy !== config.sizeCell
+  ) {
+    snake.dy = -config.sizeCell;
+    snake.dx = 0;
+  } else if (
+    (direction == 'left') &&
+    snake.dx !== config.sizeCell
+  ) {
+    snake.dx = -config.sizeCell;
+    snake.dy = 0;
+  } else if (
+    (direction == 'down') &&
+    snake.dy !== -config.sizeCell
+  ) {
+    snake.dy = config.sizeCell;
+    snake.dx = 0;
+  } else if (
+    (direction == 'right') &&
+    snake.dx !== -config.sizeCell
+  ) {
+    snake.dx = config.sizeCell;
+    snake.dy = 0;
+  }
+}
+
+function getSwipeDirection(touchStartX, touchStartY, touchEndX, touchEndY) {
+  const dx = touchEndX - touchStartX;
+  const dy = touchEndY - touchStartY;
+  const absDx = Math.abs(dx);
+  const absDy = Math.abs(dy);
+  let direction;
+
+  if (absDx > absDy && absDx > 20) {
+    direction = dx > 0 ? 'right' : 'left';
+  } else if (absDy > absDx && absDy > 20) {
+    direction = dy > 0 ? 'down' : 'up';
+  }
+
+  return direction;
+}
+
