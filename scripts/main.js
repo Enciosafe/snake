@@ -12,6 +12,7 @@ const resultModal = document.getElementById("resultModal");
 const resultName = document.getElementById("resultName");
 const resultScore = document.getElementById("resultScore");
 const playAgain = document.getElementById("playAgain");
+let berriesCaught = 0;
 let playerName = "";
 
 const screenshotBtn = document.getElementById("screenshotBtn");
@@ -142,15 +143,18 @@ function drawSnake() {
     context.fill();
 
     if (el.x === berry.x && el.y === berry.y) {
-      snake.maxTails++;
-      incScore();
+    snake.maxTails++;
+    incScore();
+    berriesCaught++;
 
-      if (toggleCheckbox.checked) {
-        config.maxStep = Math.max(Math.floor(config.maxStep * 0.9), 1);
-      }
-
-      randomPositionBerry();
+    if (toggleCheckbox.checked) {
+      config.maxStep = Math.max(Math.floor(config.maxStep * 0.9), 1);
+    } else if (berriesCaught % 3 === 0) {
+      config.maxStep = Math.max(Math.floor(config.maxStep * 0.9), 1);
     }
+
+    randomPositionBerry();
+  }
 
     for (let i = index + 1; i < snake.tails.length; i++) {
       if (el.x == snake.tails[i].x && el.y == snake.tails[i].y) {
