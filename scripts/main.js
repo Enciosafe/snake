@@ -2,6 +2,7 @@ document.body.addEventListener('touchmove', function(e) {
     e.preventDefault();
 }, { passive: false });
 
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 let scoreBlock;
 let score = 0;
 const nameModal = document.getElementById("nameModal");
@@ -73,7 +74,7 @@ toggleCheckbox.addEventListener("change", function () {
     toggleText.textContent = "Hardcore";
   } else {
     // Обычный режим
-    config.maxStep = 12; // устанавливаем более высокое значение для более низкой начальной скорости
+    config.maxStep = isMobile ? 6 : 12; // устанавливаем более высокое значение для более низкой начальной скорости
     toggleText.textContent = "Normal";
   }
   refreshGame();
@@ -84,6 +85,7 @@ function gameLoop() {
   if (++config.step < config.maxStep) {
     return;
   }
+    
   config.step = 0;
 
   context.clearRect(0, 0, canvas.width, canvas.height);
