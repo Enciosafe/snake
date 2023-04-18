@@ -149,7 +149,7 @@ function drawSnake() {
 
     if (toggleCheckbox.checked) {
       config.maxStep = Math.max(Math.floor(config.maxStep * 0.9), 1);
-    } else if (berriesCaught % 3 === 0) {
+    } else if (berriesCaught % 5 === 0) {
       config.maxStep = Math.max(Math.floor(config.maxStep * 0.9), 1);
     }
 
@@ -212,7 +212,8 @@ function refreshGame() {
   snake.maxTails = 3;
   snake.dx = config.sizeCell;
   snake.dy = 0;
-  config.step = 0;
+    config.step = 0;
+    config.maxStep = 12;
 
   randomPositionBerry();
 }
