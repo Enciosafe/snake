@@ -3,6 +3,12 @@ body {
     font-family: sans-serif;
 }
 
+@media (max-width: 768px) {
+    body {
+        overflow-y: hidden;
+    }
+}
+
 
 #game {
     background: #353336;
