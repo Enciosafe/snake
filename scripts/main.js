@@ -1,3 +1,7 @@
+document.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
 let scoreBlock;
 let score = 0;
 const nameModal = document.getElementById("nameModal");
