@@ -27,9 +27,36 @@
         <div class="canvas-wrapper">
             <canvas id="game-canvas" width="320" height="400"></canvas>
         </div>
+
+        <div class="game-header">
+            <div>
+                <span class="score-ver">version 0.1.2</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для ввода имени -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <h2>Введите ваше имя:</h2>
+            <input type="text" id="nameInput" />
+            <button id="nameSubmit">Продолжить</button>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для отображения результата -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <h2>Молодец, <span id="resultName"></span>!</h2>
+            <p>Ваш результат: <span id="resultScore"></span></p>
+            <button id="playAgain">Сыграть еще раз</button>
+            <button id="screenshotBtn">Сделать скриншот</button>
+        </div>
     </div>
 
     <script src="scripts/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
+
 </body>
 
 </html>
